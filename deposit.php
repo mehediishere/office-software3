@@ -101,56 +101,50 @@
                                                 </div><!-- /.card-header -->
                                                 <div class="card-body">
                                                   <div class="tab-content">
+                                                      <!-- /.tab-pane cash -->
                                                     <div class="active tab-pane" id="activity">
                                                         <input type="number" class="form-control" name="amount" placeholder="Amount">
                                                     </div>
-                                                    <!-- /.tab-pane -->
+                                                    <!-- /.tab-pane bank -->
                                                     <div class="tab-pane" id="timeline">
                                                         <div class="input-group  mt-2" style="flex-wrap: unset">
                                                           
                                                             <select class="form-control select2" style="width: 100%;" >
-                                                                <option selected="selected">Branch Name</option>
+                                                                <option selected="selected">Office Branch</option>
                                                                 <option>Nagad</option>
                                                                 <option>Dutch Bangla</option>
                                                                 <option>Bkash</option>
-                
                                                             </select>
-                
-                
                                                         </div>
-                                                
-                                                    
-                
-                
                                                         <div class="input-group mt-2">
-                                                           
-                                                            <input type="text" class="form-control" name="name" placeholder="User Name">
+                                                            <input type="text" class="form-control" name="name" placeholder="Receiver name">
                                                         </div>
-                
-                                                    
-                                                  
-                                                  
+                                                        <div class="input-group mt-2">
+                                                            <input type="text" class="form-control" name="bank_branch" placeholder="Bank branch">
+                                                        </div>
+                                                        <div class="input-group mt-2">
+                                                            <input type="text" class="form-control" name="route" placeholder="Route number">
+                                                        </div>
+                                                        <div class="input-group mt-2">
+                                                            <input type="number" class="form-control" name="amount" placeholder="Amount">
+                                                        </div>
                                                     </div>
-                                                    <!-- /.tab-pane -->
-                                  
+                                                    <!-- /.tab-pane mobile banking -->
                                                     <div class="tab-pane" id="settings">
                                                         <div class="input-group  mt-2" style="flex-wrap: unset">
-                                                          
                                                             <select class="form-control select2" style="width: 100%;" >
-                                                                <option selected="selected">Methods</option>
+                                                                <option selected="selected">Select mobile banking</option>
                                                                 <option>Nagad</option>
                                                                 <option>Dutch Bangla</option>
                                                                 <option>Bkash</option>
-                
                                                             </select>
-                
-                
                                                         </div>
                                                         <div class="input-group mt-2">
-                                                         
-                                                            <input type="number" class="form-control" name="number" placeholder="Number">
+                                                            <input type="number" class="form-control" name="number" placeholder="Phone number">
                                                         </div>
-                                                 
+                                                        <div class="input-group mt-2">
+                                                            <input type="text" class="form-control" name="txid" placeholder="TxID">
+                                                        </div>
                                                     </div>
                                                     <!-- /.tab-pane -->
                                                   </div>
@@ -159,26 +153,17 @@
                                               </div>
                                               <!-- /.card -->
                                         </div>
-                                       
-                                   
-                                             
                                                 <!-- /.tab-content -->
-                                            
                                             <!-- /.card -->
-                                        
-                                      
                                     </div>
                                     <!-- /.card-body -->
-
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                     
                     </div>
-
                     <!-- /.row (main row) -->
                 </div>
                 <!-- /.container-fluid -->
