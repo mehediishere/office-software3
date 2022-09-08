@@ -1,0 +1,21 @@
+<?php include('part/all-css.php'); ?>
+
+<?php include('part/all-js.php'); ?>
+
+<?php include('part/alert.php'); ?>
+
+<?php include('part/preloader.php'); ?>
+
+<?php include('part/navbar.php'); ?>
+
+<?php include('part/sidenav.php'); ?>
+
+<?php include('part/footer.php'); ?>
+
+<?php include('part/top.php'); ?>
+
+
+                        <?php
+                          $category = mysqli_fetch_all($conn->query("SELECT * FROM `expense_category` WHERE `branch` = '$_SESSION[branch]'"), MYSQLI_ASSOC);
+                          foreach($category as $row){
+                        ?>

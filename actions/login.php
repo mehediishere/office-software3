@@ -5,10 +5,11 @@
     if(isset($_POST['submit']) && !empty($_POST['email'])){
         $email = $_POST['email'];
         $pwd = $_POST['pwd'];
-        $data = mysqli_fetch_assoc($conn->query("SELECT `id`, `email`, `password` FROM `profile` WHERE `email` = '$email' AND `password` = '$pwd'"));
+        $data = mysqli_fetch_assoc($conn->query("SELECT `id`, `email`, `password`, `branch` FROM `profile` WHERE `email` = '$email' AND `password` = '$pwd'"));
         if($data != null){
-            $_SESSION['user'] = $data;
-            $_SESSION['msg'] = "Welcome ".$data['email'];
+            $_SESSION['user'] = $data['email'];
+            $_SESSION['branch'] = $data['branch'];
+            $_SESSION['msg'] = "Welcome ".$_SESSION['user'];
             header('location: ../index.php');
             exit;
         }else{
