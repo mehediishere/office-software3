@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <form>
+                                <form action="actions/deposit.php" method="POST">
                                     <div class="card-body">
                                        
                                         <div class="input-group  mt-2" style="flex-wrap: unset">
@@ -101,14 +101,21 @@
                                                 </div><!-- /.card-header -->
                                                 <div class="card-body">
                                                   <div class="tab-content">
-                                                      <!-- /.tab-pane cash -->
+                                                    <!-- /.tab-pane cash -->
                                                     <div class="active tab-pane" id="activity">
-                                                        <input type="number" class="form-control" name="amount" placeholder="Amount">
+                                                        <div class="input-group  mt-2" style="flex-wrap: unset">
+                                                            <select class="form-control select2" style="width: 100%;" >
+                                                                <option selected="selected">Office Branch</option>
+                                                                <option>Nagad</option>
+                                                                <option>Dutch Bangla</option>
+                                                                <option>Bkash</option>
+                                                            </select>
+                                                        </div>
+                                                        <input type="number" class="form-control mt-2" name="amount" placeholder="Amount">
                                                     </div>
                                                     <!-- /.tab-pane bank -->
                                                     <div class="tab-pane" id="timeline">
                                                         <div class="input-group  mt-2" style="flex-wrap: unset">
-                                                          
                                                             <select class="form-control select2" style="width: 100%;" >
                                                                 <option selected="selected">Office Branch</option>
                                                                 <option>Nagad</option>
@@ -153,8 +160,6 @@
                                               </div>
                                               <!-- /.card -->
                                         </div>
-                                                <!-- /.tab-content -->
-                                            <!-- /.card -->
                                     </div>
                                     <!-- /.card-body -->
                                     <div class="card-footer">
