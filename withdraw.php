@@ -29,7 +29,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Deposit</h1>
+                            <h1 class="m-0">Withdraw</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <form action="actions/deposit.php" method="POST" enctype="multipart/form-data">
+                                <form action="actions/withdraw.php" method="POST" enctype="multipart/form-data">
                                     <div class="card-body">
                                        
                                         <div class="input-group  mt-2" style="flex-wrap: unset">
@@ -78,35 +78,26 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
                                             </div>
-                                            <textarea name="depositDetails" class="form-control" rows="3" placeholder="Details"></textarea>                                        </div>
+                                            <textarea name="withdrawDetails" class="form-control" rows="3" placeholder="Details"></textarea>                                        </div>
                                         <div class="input-group mt-2">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                             </div>
-                                            <input type="number" class="form-control" name="amount" placeholder="Deposit amount">
-                                        </div>
-                                        <div class="input-group mt-2">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="inputGroupFileAddon01"><i class="fas fa-image"></i></span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="uploadfile" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                                <label class="custom-file-label" for="inputGroupFile01">Choose transaction receipt</label>
-                                            </div>
+                                            <input type="number" class="form-control" name="amount" placeholder="Withdraw amount">
                                         </div>
                                         <div class="form-group mt-2">
                                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
                                               <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                               </div>
-                                              <input type="text" name="deposit_date" onfocus="(this.type='date')" class="form-control" placeholder="Enter deposit date*">
+                                              <input type="text" name="withdraw_date" onfocus="(this.type='date')" class="form-control" placeholder="Enter withdraw date*">
                                             </div>
                                         </div>
                                         <div class="input-group mt-2">
                                             <div class="card" style="width: 100%;">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                                                    <h6 class="m-3">Payment Way</h6>
+                                                    <h6 class="m-3">Withdraw method</h6>
                                                     <input type="hidden" name="paymentOption" class="paymentOption" value="cash">
                                                 </div>
                                                 <div class="card-header p-2">
@@ -120,7 +111,7 @@
                                                   <div class="tab-content">
                                                     <!-- /.tab-pane cash -->
                                                     <div class="active tab-pane" id="activity">
-                                                        <input type="text" class="form-control mt-2" name="receiver" placeholder="Received by">
+                                                        <input type="text" class="form-control mt-2" name="receiver" placeholder="Received from">
                                                     </div>
                                                     <!-- /.tab-pane bank -->
                                                     <div class="tab-pane" id="timeline">

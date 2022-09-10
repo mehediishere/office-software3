@@ -1,3 +1,5 @@
+<?php include('part/top.php'); ?>
+
 <?php include('part/all-css.php'); ?>
 
 <?php include('part/all-js.php'); ?>
@@ -11,8 +13,6 @@
 <?php include('part/sidenav.php'); ?>
 
 <?php include('part/footer.php'); ?>
-
-<?php include('part/top.php'); ?>
 
 
                         <?php

@@ -29,7 +29,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Deposit</h1>
+                            <h1 class="m-0">Fund-Request</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -55,16 +55,24 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <form action="actions/deposit.php" method="POST" enctype="multipart/form-data">
+                                <form action="actions/withdraw.php" method="POST" enctype="multipart/form-data">
                                     <div class="card-body">
-                                       
+                                        <div class="input-group mt-2">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-file-invoice"></i></span>
+                                            </div>
+                                            <?php
+                                                $br = mysqli_fetch_assoc($conn->query("SELECT `branch` FROM `branch` WHERE `id` = $_SESSION[branch]"));
+                                            ?>
+                                            <input type="text" class="form-control" value="<?php echo ucfirst($br['branch']); ?>" name="currentBranch" readonly>
+                                        </div>
                                         <div class="input-group  mt-2" style="flex-wrap: unset">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">
                                                     <i class="fas fa-file-invoice"></i>
                                                 </span>
                                             </div>
-                                            <select class="form-control branch select2" name="officeBranch">
+                                            <select class="form-control branch select2" name="requestBranch">
                                                 <option></option>
                                                 <?php
                                                 $branch = mysqli_fetch_all($conn->query("SELECT * FROM `branch`"), MYSQLI_ASSOC);
@@ -78,35 +86,26 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
                                             </div>
-                                            <textarea name="depositDetails" class="form-control" rows="3" placeholder="Details"></textarea>                                        </div>
+                                            <textarea name="details" class="form-control" rows="3" placeholder="Details"></textarea>                                        </div>
                                         <div class="input-group mt-2">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                             </div>
-                                            <input type="number" class="form-control" name="amount" placeholder="Deposit amount">
-                                        </div>
-                                        <div class="input-group mt-2">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="inputGroupFileAddon01"><i class="fas fa-image"></i></span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="uploadfile" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                                <label class="custom-file-label" for="inputGroupFile01">Choose transaction receipt</label>
-                                            </div>
+                                            <input type="number" class="form-control" name="amount" placeholder="Amount">
                                         </div>
                                         <div class="form-group mt-2">
                                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
                                               <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                               </div>
-                                              <input type="text" name="deposit_date" onfocus="(this.type='date')" class="form-control" placeholder="Enter deposit date*">
+                                              <input type="text" name="request_date" onfocus="(this.type='date')" class="form-control" placeholder="Date for fund">
                                             </div>
                                         </div>
                                         <div class="input-group mt-2">
                                             <div class="card" style="width: 100%;">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                                                    <h6 class="m-3">Payment Way</h6>
+                                                    <span class="input-group-text"><i class="fas fa-file-invoice-dollar"></i></span>
+                                                    <h6 class="m-3">Fund request</h6>
                                                     <input type="hidden" name="paymentOption" class="paymentOption" value="cash">
                                                 </div>
                                                 <div class="card-header p-2">
@@ -120,7 +119,7 @@
                                                   <div class="tab-content">
                                                     <!-- /.tab-pane cash -->
                                                     <div class="active tab-pane" id="activity">
-                                                        <input type="text" class="form-control mt-2" name="receiver" placeholder="Received by">
+                                                        <input type="text" class="form-control mt-2" name="member" placeholder="Branch member name">
                                                     </div>
                                                     <!-- /.tab-pane bank -->
                                                     <div class="tab-pane" id="timeline">
@@ -203,7 +202,7 @@
             });
 
             $(".branch.select2").select2({
-                placeholder: "Select Office Branch",
+                placeholder: "Select branch to send request",
             });
 
             $(".select2bs4").select2({

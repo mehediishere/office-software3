@@ -119,7 +119,7 @@
 
                             <div class="input-group mt-2">
                               <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-receipt"></i></span>
+                                <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
                               </div>
                               <input type="text" class="form-control" placeholder="Description">
                             </div>
@@ -561,7 +561,7 @@
 
                             <div class="input-group mt-3">
                               <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-receipt"></i></span>
+                                <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
                               </div>
                               <input type="text" class="form-control" placeholder="Description">
                             </div>
