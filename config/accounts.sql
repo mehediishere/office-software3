@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2022 at 01:38 PM
+-- Generation Time: Sep 10, 2022 at 11:44 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -44,7 +44,7 @@ CREATE TABLE `balance` (
 --
 
 INSERT INTO `balance` (`id`, `branch`, `deposit`, `last_deposit`, `withdraw`, `last_withdraw`, `expense`, `last_expense`, `date`) VALUES
-(1, 1, 20000.00, '2022-09-08', 20000.00, '2022-09-08', 20000.00, '2022-09-08', '2022-09-08');
+(1, 1, 25000.00, '2022-09-08', 15000.00, '2022-09-08', 20000.00, '2022-09-08', '2022-09-08');
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,8 @@ CREATE TABLE `branch` (
 --
 
 INSERT INTO `branch` (`id`, `branch`, `total_users`, `last_added`, `date`) VALUES
-(1, 'malibagh', 1, '2022-09-07', '2022-09-07');
+(1, 'malibagh', 1, '2022-09-07', '2022-09-07'),
+(2, 'gulshan', 1, '2022-09-08', '2022-09-08');
 
 -- --------------------------------------------------------
 
@@ -76,16 +77,33 @@ INSERT INTO `branch` (`id`, `branch`, `total_users`, `last_added`, `date`) VALUE
 CREATE TABLE `deposit` (
   `id` int(11) NOT NULL,
   `branch` int(10) NOT NULL,
-  `user` int(10) NOT NULL,
+  `details` text NOT NULL,
+  `amount` double(20,2) NOT NULL DEFAULT 0.00,
   `deposit_date` date NOT NULL,
-  `amount` double(20,2) NOT NULL,
-  `deposit_with` varchar(50) NOT NULL,
-  `deposit_details` text NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `status_change_date` date NOT NULL,
-  `approved_by` date NOT NULL,
+  `receipt` varchar(100) NOT NULL,
+  `payment_option` varchar(20) NOT NULL,
+  `cash_receiver` varchar(50) NOT NULL,
+  `bank_account_holder` varchar(50) NOT NULL,
+  `bank_acc_number` varchar(30) NOT NULL,
+  `bank_name` varchar(20) NOT NULL,
+  `bank_branch` text NOT NULL,
+  `bank_route` varchar(20) NOT NULL,
+  `mobile_bank` varchar(50) NOT NULL,
+  `mobile_number` varchar(15) NOT NULL,
+  `mobile_txid` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'pending',
+  `approval_date` date NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `deposit`
+--
+
+INSERT INTO `deposit` (`id`, `branch`, `details`, `amount`, `deposit_date`, `receipt`, `payment_option`, `cash_receiver`, `bank_account_holder`, `bank_acc_number`, `bank_name`, `bank_branch`, `bank_route`, `mobile_bank`, `mobile_number`, `mobile_txid`, `status`, `approval_date`, `date`) VALUES
+(1, 1, 'no details', 5000.00, '2022-09-08', '1662792327118invoice receipt.png', 'bank', '', 'Sahadat Hossan', '21586322598544', 'Sonali Bank', 'Mirpur sonali branch', '24451', '', '', '', 'pending', '0000-00-00', '2022-09-10'),
+(2, 1, 'no details', 5000.00, '2022-09-08', '1662792327118invoice receipt.png', 'mobile', '', '', '', '', '', '', 'bkash', '01598658655', 'AXTH55825855', 'pending', '0000-00-00', '2022-09-10'),
+(3, 2, 'no details', 5000.00, '2022-09-08', '1662792327118invoice receipt.png', 'mobile', '', '', '', '', '', '', 'bkash', '01598658655', 'AXTH55825855', 'pending', '0000-00-00', '2022-09-10');
 
 -- --------------------------------------------------------
 
@@ -160,6 +178,34 @@ CREATE TABLE `fund` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fund_request`
+--
+
+CREATE TABLE `fund_request` (
+  `id` int(11) NOT NULL,
+  `branch` int(10) NOT NULL,
+  `request_branch` int(11) NOT NULL,
+  `details` text NOT NULL,
+  `amount` double(20,2) NOT NULL DEFAULT 0.00,
+  `request_date` date NOT NULL,
+  `payment_option` varchar(20) NOT NULL,
+  `request_from` varchar(50) NOT NULL,
+  `bank_account_holder` varchar(50) NOT NULL,
+  `bank_acc_number` varchar(30) NOT NULL,
+  `bank_name` varchar(20) NOT NULL,
+  `bank_branch` text NOT NULL,
+  `bank_route` varchar(20) NOT NULL,
+  `mobile_bank` varchar(50) NOT NULL,
+  `mobile_number` varchar(15) NOT NULL,
+  `mobile_txid` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'pending',
+  `approval_date` date NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `profile`
 --
 
@@ -194,16 +240,34 @@ INSERT INTO `profile` (`id`, `branch`, `balance`, `name`, `password`, `email`, `
 CREATE TABLE `withdraw` (
   `id` int(11) NOT NULL,
   `branch` int(10) NOT NULL,
-  `user` int(10) NOT NULL,
+  `details` text NOT NULL,
+  `amount` double(20,2) NOT NULL DEFAULT 0.00,
   `withdraw_date` date NOT NULL,
-  `amount` double(20,2) NOT NULL,
-  `withdraw_with` varchar(50) NOT NULL,
-  `withdraw_details` text NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `status_change_date` date NOT NULL,
-  `approved_by` date NOT NULL,
+  `payment_option` varchar(20) NOT NULL,
+  `withdraw_from` varchar(50) NOT NULL,
+  `bank_account_holder` varchar(50) NOT NULL,
+  `bank_acc_number` varchar(30) NOT NULL,
+  `bank_name` varchar(20) NOT NULL,
+  `bank_branch` text NOT NULL,
+  `bank_route` varchar(20) NOT NULL,
+  `mobile_bank` varchar(50) NOT NULL,
+  `mobile_number` varchar(15) NOT NULL,
+  `mobile_txid` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'pending',
+  `approval_date` date NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `withdraw`
+--
+
+INSERT INTO `withdraw` (`id`, `branch`, `details`, `amount`, `withdraw_date`, `payment_option`, `withdraw_from`, `bank_account_holder`, `bank_acc_number`, `bank_name`, `bank_branch`, `bank_route`, `mobile_bank`, `mobile_number`, `mobile_txid`, `status`, `approval_date`, `date`) VALUES
+(4, 2, 'no details', 2000.00, '0000-00-00', 'cash', 'sarafat vai', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10'),
+(5, 2, 'no details', 2000.00, '0000-00-00', 'cash', 'Alim vai', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10'),
+(6, 1, 'new client safayet', 3000.00, '2022-09-15', 'cash', 'sarafat vai', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10'),
+(7, 2, '', 50000.00, '0000-00-00', 'cash', '', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10'),
+(8, 0, '', 34444.00, '0000-00-00', 'cash', '', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10');
 
 --
 -- Indexes for dumped tables
@@ -246,6 +310,12 @@ ALTER TABLE `fund`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `fund_request`
+--
+ALTER TABLE `fund_request`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
@@ -271,13 +341,13 @@ ALTER TABLE `balance`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `expense`
@@ -298,6 +368,12 @@ ALTER TABLE `fund`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `fund_request`
+--
+ALTER TABLE `fund_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
@@ -307,7 +383,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT for table `withdraw`
 --
 ALTER TABLE `withdraw`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
