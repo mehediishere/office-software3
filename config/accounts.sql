@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2022 at 11:44 AM
+-- Generation Time: Sep 11, 2022 at 12:56 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -44,7 +44,8 @@ CREATE TABLE `balance` (
 --
 
 INSERT INTO `balance` (`id`, `branch`, `deposit`, `last_deposit`, `withdraw`, `last_withdraw`, `expense`, `last_expense`, `date`) VALUES
-(1, 1, 25000.00, '2022-09-08', 15000.00, '2022-09-08', 20000.00, '2022-09-08', '2022-09-08');
+(1, 1, 25000.00, '2022-09-08', 15000.00, '2022-09-08', 20000.00, '2022-09-08', '2022-09-08'),
+(2, 2, 31000.00, '2022-09-08', 32000.00, '2022-09-08', 33000.00, '2022-09-08', '2022-09-08');
 
 -- --------------------------------------------------------
 
@@ -158,26 +159,6 @@ INSERT INTO `expense_category` (`id`, `branch`, `user`, `category`, `details`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fund`
---
-
-CREATE TABLE `fund` (
-  `id` int(11) NOT NULL,
-  `branch` int(10) NOT NULL,
-  `user` int(10) NOT NULL,
-  `fund_type` varchar(50) NOT NULL,
-  `amount` double(20,2) NOT NULL,
-  `payment_with` varchar(50) NOT NULL,
-  `payment_details` text NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `status_change_date` date NOT NULL,
-  `approved_by` date NOT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `fund_request`
 --
 
@@ -202,6 +183,13 @@ CREATE TABLE `fund_request` (
   `approval_date` date NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fund_request`
+--
+
+INSERT INTO `fund_request` (`id`, `branch`, `request_branch`, `details`, `amount`, `request_date`, `payment_option`, `request_from`, `bank_account_holder`, `bank_acc_number`, `bank_name`, `bank_branch`, `bank_route`, `mobile_bank`, `mobile_number`, `mobile_txid`, `status`, `approval_date`, `date`) VALUES
+(8, 1, 2, 'no details', 2333.00, '2022-09-10', 'cash', 'Alim vai', '', '', '', '', '', '', '', '', 'accepted', '2022-09-11', '2022-09-10');
 
 -- --------------------------------------------------------
 
@@ -229,7 +217,8 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`id`, `branch`, `balance`, `name`, `password`, `email`, `phone`, `address`, `details`, `img`, `date`, `status`) VALUES
-(1, 1, 200.00, 'mehedi', '1234', 'mehedi@mail.com', 1957586942, 'ECSU CAMPUS BOX\n1704 WEEKSVILLE ROAD\nELIZABETH CITY, NC 27909', '', '', '2022-09-07', 'active');
+(1, 1, 200.00, 'mehedi', '1234', 'mehedi@mail.com', 1957586942, 'ECSU CAMPUS BOX\n1704 WEEKSVILLE ROAD\nELIZABETH CITY, NC 27909', '', '', '2022-09-07', 'active'),
+(2, 2, 200.00, 'pino', '1234', 'pino@mail.com', 1575656322, 'SCSU CAMPUS BOX\r\n1704 WEEKSVILLE ROAD\r\nELIZABETH CITY, NC 27909', '', '', '2022-09-09', 'active');
 
 -- --------------------------------------------------------
 
@@ -265,9 +254,7 @@ CREATE TABLE `withdraw` (
 INSERT INTO `withdraw` (`id`, `branch`, `details`, `amount`, `withdraw_date`, `payment_option`, `withdraw_from`, `bank_account_holder`, `bank_acc_number`, `bank_name`, `bank_branch`, `bank_route`, `mobile_bank`, `mobile_number`, `mobile_txid`, `status`, `approval_date`, `date`) VALUES
 (4, 2, 'no details', 2000.00, '0000-00-00', 'cash', 'sarafat vai', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10'),
 (5, 2, 'no details', 2000.00, '0000-00-00', 'cash', 'Alim vai', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10'),
-(6, 1, 'new client safayet', 3000.00, '2022-09-15', 'cash', 'sarafat vai', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10'),
-(7, 2, '', 50000.00, '0000-00-00', 'cash', '', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10'),
-(8, 0, '', 34444.00, '0000-00-00', 'cash', '', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10');
+(6, 1, 'new client safayet', 3000.00, '2022-09-15', 'cash', 'sarafat vai', '', '', '', '', '', '', '', '', 'pending', '0000-00-00', '2022-09-10');
 
 --
 -- Indexes for dumped tables
@@ -304,12 +291,6 @@ ALTER TABLE `expense_category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `fund`
---
-ALTER TABLE `fund`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `fund_request`
 --
 ALTER TABLE `fund_request`
@@ -335,7 +316,7 @@ ALTER TABLE `withdraw`
 -- AUTO_INCREMENT for table `balance`
 --
 ALTER TABLE `balance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `branch`
@@ -362,28 +343,22 @@ ALTER TABLE `expense_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `fund`
---
-ALTER TABLE `fund`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `fund_request`
 --
 ALTER TABLE `fund_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `withdraw`
 --
 ALTER TABLE `withdraw`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
