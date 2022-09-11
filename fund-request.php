@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <form action="actions/withdraw.php" method="POST" enctype="multipart/form-data">
+                                <form action="actions/fund-request.php" method="POST">
                                     <div class="card-body">
                                         <div class="input-group mt-2">
                                             <div class="input-group-prepend">

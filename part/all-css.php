@@ -14,3 +14,9 @@
   <link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker.css" />
 
   <link rel="stylesheet" href="./plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" />
+
+  <style>
+    .btn-cyanmix{
+      background-color: #35d4ab;
+    }
+  </style>

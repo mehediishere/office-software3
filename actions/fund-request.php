@@ -5,7 +5,6 @@
 
         $chk = 0;
 
-        $currentBranch = $conn->real_escape_string($_POST['currentBranch']);
         $requestBranch = $conn->real_escape_string($_POST['requestBranch']);
         $details = $conn->real_escape_string($_POST['details']);
         $amount = $conn->real_escape_string($_POST['amount']);
@@ -30,7 +29,7 @@
         }
 
         if($chk != 1){
-            $conn->query("INSERT INTO `fund_request`(`branch`,`request_branch`, `details`, `amount`, `request_date`, `request_from`, `bank_account_holder`, `bank_branch`, `bank_name`, `bank_route`, `bank_acc_number`, `mobile_bank`, `mobile_number`, `mobile_txid`, `payment_option`, `date`) VALUES ('$currentBranch', '$requestBranch', '$details','$amount','$request_date','$memberName','$accountHolder','$bank_branch','$bank_name','$route','$accountNumber','$mobileBanking','$phoneNumber','$txid', '$paymentOption', '$date')");
+            $conn->query("INSERT INTO `fund_request`(`branch`,`request_branch`, `details`, `amount`, `request_date`, `request_from`, `bank_account_holder`, `bank_branch`, `bank_name`, `bank_route`, `bank_acc_number`, `mobile_bank`, `mobile_number`, `mobile_txid`, `payment_option`, `date`) VALUES ('$_SESSION[branch]', '$requestBranch', '$details','$amount','$request_date','$memberName','$accountHolder','$bank_branch','$bank_name','$route','$accountNumber','$mobileBanking','$phoneNumber','$txid', '$paymentOption', '$date')");
 
             $_SESSION['msg'] = "Submit successfully!!";
 
