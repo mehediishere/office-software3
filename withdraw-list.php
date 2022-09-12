@@ -1,6 +1,6 @@
 <?php 
 include('part/top.php'); 
-$balance = mysqli_fetch_assoc($conn->query("SELECT b.*, n.branch as nm FROM `balance` as b INNER JOIN `branch` as n on (b.branch = '$_SESSION[branch]' AND n.id = '$_SESSION[branch]')"));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +33,7 @@ $balance = mysqli_fetch_assoc($conn->query("SELECT b.*, n.branch as nm FROM `bal
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Deposit List</h1>
+              <h1>Withdraw List</h1>
             </div>
             <div class="col-sm-6 text-right">
               <span><?php echo "Withdraw Balance : ".$balance['withdraw']; ?></span>
@@ -47,43 +47,12 @@ $balance = mysqli_fetch_assoc($conn->query("SELECT b.*, n.branch as nm FROM `bal
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card">
-
-
-                <!-- /.card-header -->
-                <div class="card-body">
-
-                  <select class="form-control select2">
-                    <option selected="selected">Select a Category </option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-
-
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-
-
-              <!-- /.card -->
-            </div>
-            <!-- /.col -->
-          </div>
           <div class="row">
             <div class="col-12">
               <div class="card">
                 <div class="card-header" style="background: #02c996cc;" >
                   <h3 class="card-title">Withdraw</h3>
                 </div>
-
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-hover">

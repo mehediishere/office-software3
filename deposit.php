@@ -1,4 +1,7 @@
-<?php include('part/top.php'); ?>
+<?php 
+include('part/top.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,11 +34,8 @@
                         <div class="col-sm-6">
                             <h1 class="m-0">Deposit</h1>
                         </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                         
-                            </ol>
+                        <div class="col-sm-6 text-right">
+                            <span><?php echo "Deposit Balance : ".$balance['deposit']; ?></span>
                         </div>
                         <!-- /.col -->
                     </div>
