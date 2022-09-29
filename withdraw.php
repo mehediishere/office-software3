@@ -31,11 +31,8 @@
                         <div class="col-sm-6">
                             <h1 class="m-0">Withdraw</h1>
                         </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                         
-                            </ol>
+                        <div class="col-sm-6 text-right">
+                            <span><?php echo "Withdraw Balance : ".$balance['withdraw']; ?></span>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -111,7 +108,10 @@
                                                   <div class="tab-content">
                                                     <!-- /.tab-pane cash -->
                                                     <div class="active tab-pane" id="activity">
-                                                        <input type="text" class="form-control mt-2" name="receiver" placeholder="Received from">
+                                                        <!-- <input type="text" class="form-control mt-2" name="receiver" placeholder="Received from"> -->
+                                                        <select name="receiver" class="form-control select2user select2 input-select-section">
+                                                            <option value=""></option>
+                                                        </select>
                                                     </div>
                                                     <!-- /.tab-pane bank -->
                                                     <div class="tab-pane" id="timeline">
@@ -189,6 +189,11 @@
         $(function () {
             bsCustomFileInput.init();
             
+            $(".select2user.select2").select2({
+                tags: 'true',
+                placeholder: "Select Receiver",
+            });
+
             $(".mobileBanking.select2").select2({
                 placeholder: "Select Mobile Banking",
             });
@@ -200,26 +205,6 @@
             $(".select2bs4").select2({
                 theme: "bootstrap4",
             });
-
-            $("#example1")
-                .DataTable({
-                    responsive: true,
-                    lengthChange: false,
-                    autoWidth: false,
-                    buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
-                })
-                .buttons()
-                .container()
-                .appendTo("#example1_wrapper .col-md-6:eq(0)");
-            $("#example2").DataTable({
-                paging: true,
-                lengthChange: false,
-                searching: false,
-                ordering: true,
-                info: true,
-                autoWidth: false,
-                responsive: true,
-            });
         });
     </script>
 
@@ -228,6 +213,18 @@
             $(".js_tab").on("click", function(){
                 var v = $(this).data("value");
                 $(".paymentOption").val(v);
+            });
+
+            $(".branch").on("change", function(){
+                var val = $(this).val();
+                $.ajax({
+                    url: "actions/branchAccountList.php",
+                    type: "POST",
+                    data: {request: val},
+                    success:function(data){
+                        $(".input-select-section").html(data);
+                    }
+                });
             });
         });
     </script>

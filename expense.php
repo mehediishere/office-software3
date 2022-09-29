@@ -1,6 +1,6 @@
 <?php 
   include('part/top.php');
-  $balance = mysqli_fetch_assoc($conn->query("SELECT b.*, n.branch as nm FROM `balance` as b INNER JOIN `branch` as n on (b.branch = '$_SESSION[branch]' AND n.id = '$_SESSION[branch]')"));
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">

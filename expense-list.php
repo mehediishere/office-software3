@@ -1,4 +1,7 @@
-<?php include('part/top.php'); ?>
+<?php 
+include('part/top.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +35,9 @@
             <div class="col-sm-6">
               <h1>Expense List</h1>
             </div>
+            <div class="col-sm-6 text-right">
+            <?php echo "Expense Balance : ".$balance['expense']; ?>
+            </div>
           </div>
         </div>
         <!-- /.container-fluid -->
@@ -39,26 +45,6 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card">
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <select class="form-control select2">
-                    <option selected="selected">Select a Category </option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.card-body -->
-              </div>
-            </div>
-            <!-- /.col -->
-          </div>
           <div class="row">
             <div class="col-12">
               <div class="card">

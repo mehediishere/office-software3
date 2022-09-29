@@ -39,28 +39,6 @@
       <section class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-4">
-              <div class="card">
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <select class="form-control select2">
-                    <option selected="selected">Select a Category </option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-              <!-- /.card -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <div class="row">
             <div class="col-12">
               <div class="card">
                 <div class="card-header" style="background: #02c996cc;" >
