@@ -32,11 +32,6 @@
                         <div class="col-sm-6">
                             <h1>Cash Book</h1>
                         </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <button class="btn btn-primary">Home</button>
-                            </ol>
-                        </div>
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -45,16 +40,12 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    
-                   
-                      
                         <div class="row">
                             <div class="col-6">
                                 <div class="card">
                                     <div class="card-header" style="background: #02c996cc;" >
                                         <h3 class="card-title">Debit</h3>
                                     </div>
-
                                     <!-- /.card-header -->
                                     <div class="card-body">
                                         <table id="example1" class="table table-bordered table-hover">
@@ -64,72 +55,31 @@
                                                     <th>Date</th>
                                                     <th>Details</th>
                                                     <th>Amount</th>
-
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php
+                                                    $n = 0;
+                                                    $debit = mysqli_fetch_all($conn->query("SELECT * FROM(SELECT `date`, `details`, `amount` FROM `deposit` WHERE branch = '$_SESSION[branch]' UNION SELECT `date`, `details`, `amount` FROM `fund_request` WHERE branch = '$_SESSION[branch]') a order by `date` desc"), MYSQLI_ASSOC);
+                                                    foreach($debit as $row){
+                                                ?>
                                                 <tr>
-                                                    <td>1</td>
-
-                                                    <td>
-                                                        10/02/2022
-                                                    </td>
-                                                    <td>Lunch</td>
-                                                    <td>450</td>
-                                                  
-
-
+                                                    <td><?php echo ++$n; ?></td>
+                                                    <td><?php echo $row['date']; ?></td>
+                                                    <td><?php echo $row['details']; ?></td>
+                                                    <td><?php echo $row['amount']; ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>1</td>
-
-                                                    <td>
-                                                        10/02/2022
-                                                    </td>
-                                                    <td>Lunch</td>
-                                                    <td>450</td>
-                                                  
-
-
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-
-                                                    <td>
-                                                        10/02/2022
-                                                    </td>
-                                                    <td>Lunch</td>
-                                                    <td>450</td>
-                                                  
-
-
-                                                </tr>
-
-
+                                                <?php } ?>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colspan="3">
-                                                    </td>
-                                                   
-                                                   
-                                                    <td>
-                                                        <strong>
-                                                            Total : 50 Tk
-                                                        </strong>
-                                                    </td>
-
+                                                    <td colspan="3"></td>
+                                                    <td><strong></strong></td>
                                                 </tr>
                                             </tfoot>
-
                                         </table>
                                     </div>
-                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card -->
-
-
-                                <!-- /.card -->
                             </div>
                             <div class="col-6">
                                 <div class="card">
@@ -141,80 +91,47 @@
                                     <div class="card-body">
                                         <table id="example2" class="table table-bordered table-hover">
                                           <thead>
-                                            <tr style="background: #20c99769;" >
-                                                <th>#</th>
-                                                <th>Date</th>
-                                                <th>Details</th>
-                                                <th>Amount</th>
+                                                <tr style="background: #20c99769;" >
+                                                    <th>#</th>
+                                                    <th>Date</th>
+                                                    <th>Details</th>
+                                                    <th>Amount</th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-
-                                                <td>
-                                                    10/02/2022
-                                                </td>
-                                                <td>Lunch</td>
-                                                <td>450</td>
-                                              
-
-
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-
-                                                <td>
-                                                    10/02/2022
-                                                </td>
-                                                <td>Lunch</td>
-                                                <td>450</td>
-                                              
-
-
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-
-                                                <td>
-                                                    10/02/2022
-                                                </td>
-                                                <td>Lunch</td>
-                                                <td>450</td> 
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <td colspan="3">
-                                                </td>
-                                                <td>
-                                                    <strong>
-                                                        Total : 50 Tk
-                                                    </strong>
-                                                </td>
-                                            </tr>
-                                        </tfoot>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    $n = 0;
+                                                    $credit = mysqli_fetch_all($conn->query("SELECT * FROM(SELECT `date`, `details`, `amount` FROM `expense` WHERE branch = '$_SESSION[branch]' UNION SELECT `date`, `details`, `amount` FROM `withdraw` WHERE branch = '$_SESSION[branch]') a order by `date` desc"), MYSQLI_ASSOC);
+                                                    foreach($credit as $row){
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo ++$n; ?></td>
+                                                    <td><?php echo $row['date']; ?></td>
+                                                    <td><?php echo $row['details']; ?></td>
+                                                    <td><?php echo $row['amount']; ?></td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="3"></td>
+                                                    <td><strong></strong></td>
+                                                </tr>
+                                            </tfoot>
                                         </table>
                                     </div>
-                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card -->
-                                <!-- /.card -->
                             </div>
-                            <!-- /.col -->
                         </div>
-                        <!-- /.row -->
-                    <!-- /.container-fluid -->
             </section>
-            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <?php include('part/footer.php'); ?>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
+
         </aside>
         <!-- /.control-sidebar -->
     </div>
@@ -223,8 +140,6 @@
     <?php include('part/all-js.php'); ?>
 
     <?php include('part/alert.php'); ?>
-
-
 
     <!-- Page specific script -->
     <script>

@@ -14,7 +14,7 @@
             <img src="dist/img/user.jpg" class="img-circle elevation-2" alt="User Image" />
           </div>
           <div class="info">
-            <a href="#" class="d-block">Welcome Admin</a>
+            <a href="#" class="d-block text-capitalize"> <?php echo strtok($_SESSION['user'], '@'); ?></a>
           </div>
         </div>
 

@@ -13,9 +13,3 @@
 <?php include('part/sidenav.php'); ?>
 
 <?php include('part/footer.php'); ?>
-
-
-                        <?php
-                          $category = mysqli_fetch_all($conn->query("SELECT * FROM `expense_category` WHERE `branch` = '$_SESSION[branch]'"), MYSQLI_ASSOC);
-                          foreach($category as $row){
-                        ?>

@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background: #15b0c9">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background: #00b989">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -11,19 +11,16 @@
 
       <ul style=" z-index: 1;" class="nav navbar-nav navbar-right nav_bar_icons menu_right_li">
         <li class="new_invoice_top_menu_link_li">
-          <a style="color: white;" href="new-invoice.html" class="new_bill_btn btn btn-success btn-sm btn-xs"><img
-              class="lazy_img" width="20" src="https://demo.bhisab.com/images/icon/bill.png"><span
-              class="new_bill">&nbsp;Deposit Balance : <?php echo $balance['deposit']; ?></span></a>
+          <a style="color: white;" href="new-invoice.html" class="new_bill_btn btn btn-success btn-sm btn-xs"><i class="fas fa-coins"></i><span
+              class="new_bill">&nbsp;Deposit Balance : <?php echo $balance['deposit']; ?></span><span style="font-family: 'Jost', sans-serif;"> ৳</span></a>
         </li>
         <li class="new_invoice_top_menu_link_li" style="margin:0 10px ;">
           <a style="color: white;" href="new_invoice.php" class="new_bill_btn btn btn-success btn-sm btn-xs"
-            data-toggle="modal" data-target="#modal-default"><img class="lazy_img" width="20"
-              src="https://demo.bhisab.com/images/icon/bill.png"><span class=" new_bill">&nbsp;Withdraw Balance : <?php echo $balance['withdraw']; ?></span></a>
+            data-toggle="modal" data-target="#modal-default"><i class="fas fa-coins"></i><span class=" new_bill">&nbsp;Withdraw Balance : <?php echo $balance['withdraw']; ?></span><span style="font-family: 'Jost', sans-serif;"> ৳</span></a>
         </li>
         <li class="new_invoice_top_menu_link_li">
           <a style="color: white;" href="new_invoice.php" class="new_bill_btn btn btn-success btn-sm btn-xs"
-            data-toggle="modal" data-target="#modal-expense"><img class="lazy_img" width="20"
-              src="https://demo.bhisab.com/images/icon/bill.png"><span class=" new_bill">&nbsp;Expense Balance : <?php echo $balance['expense']; ?></span></a>
+            data-toggle="modal" data-target="#modal-expense"><i class="fas fa-coins"></i><span class=" new_bill">&nbsp;Expense Balance : <?php echo $balance['expense']; ?></span><span style="font-family: 'Jost', sans-serif;"> ৳</span></a>
         </li>
       </ul>
 

@@ -74,6 +74,7 @@
                                             </div>
                                             <select class="form-control branch select2" name="requestBranch">
                                                 <option></option>
+                                                <!-- <option value="admin">To Admin</option> -->
                                                 <?php
                                                 $branch = mysqli_fetch_all($conn->query("SELECT * FROM `branch`"), MYSQLI_ASSOC);
                                                 foreach($branch as $row){
@@ -119,7 +120,10 @@
                                                   <div class="tab-content">
                                                     <!-- /.tab-pane cash -->
                                                     <div class="active tab-pane" id="activity">
-                                                        <input type="text" class="form-control mt-2" name="member" placeholder="Branch member name">
+                                                        <!-- <input type="text" class="form-control mt-2" name="member" placeholder="Branch member name"> -->
+                                                        <select name="member" class="form-control select2user select2 input-select-section">
+                                                            <option value=""></option>
+                                                        </select>
                                                     </div>
                                                     <!-- /.tab-pane bank -->
                                                     <div class="tab-pane" id="timeline">
@@ -209,24 +213,9 @@
                 theme: "bootstrap4",
             });
 
-            $("#example1")
-                .DataTable({
-                    responsive: true,
-                    lengthChange: false,
-                    autoWidth: false,
-                    buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
-                })
-                .buttons()
-                .container()
-                .appendTo("#example1_wrapper .col-md-6:eq(0)");
-            $("#example2").DataTable({
-                paging: true,
-                lengthChange: false,
-                searching: false,
-                ordering: true,
-                info: true,
-                autoWidth: false,
-                responsive: true,
+            $(".select2user.select2").select2({
+                tags: 'true',
+                placeholder: "Select/Enter Branch Member Name",
             });
         });
     </script>
@@ -236,6 +225,18 @@
             $(".js_tab").on("click", function(){
                 var v = $(this).data("value");
                 $(".paymentOption").val(v);
+            });
+
+            $(".branch").on("change", function(){
+                var val = $(this).val();
+                $.ajax({
+                    url: "actions/branchAccountList.php",
+                    type: "POST",
+                    data: {request: val},
+                    success:function(data){
+                        $(".input-select-section").html(data);
+                    }
+                });
             });
         });
     </script>

@@ -120,7 +120,10 @@ include('part/top.php');
                                                   <div class="tab-content">
                                                     <!-- /.tab-pane cash -->
                                                     <div class="active tab-pane" id="activity">
-                                                        <input type="text" class="form-control mt-2" name="receiver" placeholder="Received by">
+                                                        <!-- <input type="text" class="form-control mt-2" name="receiver" placeholder="Received by"> -->
+                                                        <select name="receiver" class="form-control select2user select2 input-select-section">
+                                                            <option value=""></option>
+                                                        </select>
                                                     </div>
                                                     <!-- /.tab-pane bank -->
                                                     <div class="tab-pane" id="timeline">
@@ -198,6 +201,11 @@ include('part/top.php');
         $(function () {
             bsCustomFileInput.init();
             
+            $(".select2user.select2").select2({
+                tags: 'true',
+                placeholder: "Select Receiver",
+            });
+
             $(".mobileBanking.select2").select2({
                 placeholder: "Select Mobile Banking",
             });
@@ -210,25 +218,6 @@ include('part/top.php');
                 theme: "bootstrap4",
             });
 
-            $("#example1")
-                .DataTable({
-                    responsive: true,
-                    lengthChange: false,
-                    autoWidth: false,
-                    buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
-                })
-                .buttons()
-                .container()
-                .appendTo("#example1_wrapper .col-md-6:eq(0)");
-            $("#example2").DataTable({
-                paging: true,
-                lengthChange: false,
-                searching: false,
-                ordering: true,
-                info: true,
-                autoWidth: false,
-                responsive: true,
-            });
         });
     </script>
 
@@ -237,6 +226,18 @@ include('part/top.php');
             $(".js_tab").on("click", function(){
                 var v = $(this).data("value");
                 $(".paymentOption").val(v);
+            });
+
+            $(".branch").on("change", function(){
+                var val = $(this).val();
+                $.ajax({
+                    url: "actions/branchAccountList.php",
+                    type: "POST",
+                    data: {request: val},
+                    success:function(data){
+                        $(".input-select-section").html(data);
+                    }
+                });
             });
         });
     </script>
